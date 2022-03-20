@@ -1,92 +1,179 @@
-# plugin-loup-garou
+# PLUGIN LOUP GAROU
 
+## Table des matières
 
+- [PLUGIN LOUP GAROU](#plugin-loup-garou)
+  - [Table des matières](#table-des-matières)
+  - [À propos](#à-propos)
+  - [Jouer facilement](#jouer-facilement)
+  - [Installation](#installation)
+    - [Dépendances requises](#dépendances-requises)
+    - [Installation classique](#installation-classique)
+    - [Installation avec docker (Alternative)](#installation-avec-docker-alternative)
+      - [Installation du serveur](#installation-du-serveur)
+      - [Démarage du serveur](#démarage-du-serveur)
+  - [Commandes](#commandes)
+  - [Crédits](#crédits)
+  - [Aide](#aide)
+    - [Questions fréquentes](#questions-fréquentes)
+  - [Indications pour les développeurs](#indications-pour-les-développeurs)
+    - [Ajouter des rôles](#ajouter-des-rôles)
+      - [Quelques classes utiles](#quelques-classes-utiles)
+    - [Publier un rôle](#publier-un-rôle)
+- [License](#license)
 
-## Getting started
+## À propos
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+Le mode Loup-Garou est un mode inspiré du jeu de société [Les Loups-Garous de Thiercelieux](https://fr.wikipedia.org/wiki/Les_Loups-garous_de_Thiercelieux) reprenant son fonctionnement ainsi que sa manière d'être joué, à la seule différence qu'aucun maître du jeu n'est requis, le déroulement de chaque partie étant entièrement automatisé :
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- Déroulement de la partie automatisé
+- Rôles du jeu de base, et nouveaux rôles
+- Utilisable sur n'importe quelle map
 
-## Add your files
+## Jouer facilement
+Un serveur est mis à votre disposition pour vous permettre de jouer au LoupGarou rapidement et facilement entre amis ou avec des inconnus. Vous avez juste à créer une partie et y inviter vos amis, ou à rejoindre des parties publiques.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.papierpain.fr/minecraft/plugin-loup-garou.git
-git branch -M master
-git push -uf origin master
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.papierpain.fr/minecraft/plugin-loup-garou/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+**IP:** `lg.leomelki.fr`
+**Version:** `1.9.4`
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### Dépendances requises
+- [ProtocolLib](https://www.spigotmc.org/resources/protocollib.1997/)
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+### Installation classique
+**Minecraft 1.15.1 est requis.**  
+Pour installer le plug-in, merci de suivre les étapes suivantes:
+  - Téléchargez Spigot 1.15.1 et lancez une fois le serveur
+  - Dans le dossier `plugins`, insérez [ProtocolLib](https://www.spigotmc.org/resources/protocollib.1997/) et [LoupGarou.jar](https://github.com/leomelki/LoupGarou/releases)
+  - Redémarrez votre serveur puis donnez vous les permissions administrateur (/op <votre_pseudo> dans la console)
+  - Allez sur la map et ajoutez les points de spawn sur chaque dalle `/lg addSpawn`
+  - Connectez-vous au serveur et choisissez les rôles à utiliser avec `/lg roles set <ROLE> <MONTANT>`
+	  - ⚠️ Il faut qu'il y ait autant de places dans les rôles que de joueur pour lancer une partie
+  - Vous pouvez démarrer la partie avec `/lg start <pseudo>` 
+	  - ⚠️ N'oubliez pas de mettre votre pseudo. Exemple : `/lg start leomelki` 
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Lien des releases : [Cliquez ici](https://github.com/leomelki/LoupGarou/releases)
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+### Installation avec docker (Alternative)
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Vous devez avoir installé `docker` et `docker-compose` sur votre machine
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+```sh
+version: "3.0"
 
-## License
-For open source projects, say how it is licensed.
+services:
+  loup-garou:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+      args:
+        SPIGOT_VERSION: 1.15.1
+    volumes:
+      - ./minecraft_data:/minecraft
+    ports:
+      - 25565:25565
+```
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+#### Installation du serveur
+```sh
+docker-compose up -d --build
+```
+
+#### Démarage du serveur
+
+Vous devez exécuter la commande suivante à chaque redémarage de votre machine avant de pouvoir continuer
+
+```sh
+docker-compose up -d
+```
+
+Ainsi, vous pouvez lancer le serveur en utilisant la commande suivante :
+
+```sh
+docker-compose exec loup-garou java -jar spigot.jar
+```
+
+Les fichiers relatifs à minecraft se situeront dans le dossier `minecraft_data` 
+> **Tip :** Il faut accepter les conditions d'utilisations de Mojang en modifiant le fichier `minecraft_data/eula.txt`
+
+## Commandes
+
+`/lg roles` : Retourne la liste des rôles dans la partie  
+`/lg roles set <ID> <MONTANT>` : Définit le nombre de joueurs pour un certain rôle  
+`/lg addSpawn` : Ajoute un point de spawn (emplacement de joueur)  
+`/lg start <PSEUDO>` : Lance la partie  
+`/lg end <PSEUDO>` : Arrête une partie  
+`/lg reloadConfig` : Recharge la configuration  
+`/lg joinAll` : À utiliser après avoir changé les rôles  
+
+## Crédits
+
+- Chef de Projet : [Shytoos](https://twitter.com/shytoos_)
+- Développement : [Leomelki](https://twitter.com/leomelki)
+- Mapping : [Cosii](https://www.youtube.com/channel/UCwyOcA41QSk590fl9L0ys8A)
+
+## Aide
+
+Par soucis de temps, nous ne pouvons pas faire de support au cas par cas, mais vous pouvez rejoindre notre serveur [Discord](https://discord.gg/Squeezie) pour trouver de l'aide auprès de la communauté.
+
+### Questions fréquentes
+
+- Que faire en cas de problème d'affichage (votes bloqués au dessus des têtes, etc...) ?  
+
+Cela arrive après avoir `reload` au cours d'une partie, tous les joueurs qui ont ce problème doivent se déconnecter et se reconnecter.
+
+- Pourquoi la partie ne se lance pas ?  
+
+Il faut taper la commande `/lg start <PSEUDO>` en mettant le pseudo d'un des joueurs qui sera présent dans la partie. Si cela ne fonctionne toujours pas, c'est parce qu'il n'y a pas suffisamment de rôles pour le nombre de joueurs, il doit y avoir le même nombre de rôles qu'il y aura de joueurs dans la partie. N'oubliez pas de taper `/lg joinAll` après avoir modifié la liste des rôles.
+
+- J'ai mal placés mes spawns ou je veux utiliser une nouvelle map, comment faire ?  
+
+Il suffit d'ouvrir le fichier `plugins\LoupGarou\config.yml` et de supprimer les points de spawn.
+
+- Puis-je mettre plusieurs fois le même rôle dans une seule partie ?
+
+Cela est possible pour les rôles `Loup-Garou`, `Villageois` et `Chasseur`.
+D'autres rôles peuvent aussi marcher mais n'ont pas été testés avec plusieurs joueurs ayant ce rôle dans une seule partie. C'est à vos risques et périls.
+
+- Le tour du loup noir (ou tout autre type de loup garou) ne passe pas.
+
+Il vous faut au minimum un loup garou normal lorsque vous mettez d'autres types de loups dans la partie.
+
+## Indications pour les développeurs
+
+Ce plugin LoupGarou ayant été modifié de nombreuses fois, parfois dans des timings tendus, le code n'est pas très propre. Aussi, il n'est pas documenté.  
+
+Vous devez utiliser `Lombok` et `Maven` pour modifier ce projet. 
+Vous devez aussi installer la repository `Spigot` avec [BuildTools](https://www.spigotmc.org/wiki/buildtools/).
+
+**Cependant, si l'envie vous prend de modifier ou d'utiliser le code ici présent en partie, ou dans sa totalité, merci de créditer [Leomelki](https://twitter.com/leomelki) et [Shytoos](https://twitter.com/shytoos_).
+Une utilisation commerciale est cependant interdite. Merci de vous référer aux informations de [license](#license)**
+
+### Ajouter des rôles
+
+Ce plugin de Loup-Garou est organisé autour d'un système d'événements, disponibles dans le package `fr.leomelki.loupgarou.events`.  
+N'ayant pas le temps de les documenter, vous devriez comprendre vous-même quand ils sont appelés.
+
+Pour vous aider à créer des rôles, copiez des rôles ayant déjà été créés pour ainsi les modifier.
+
+⚠️ Ce projet a été créé de façon à ce que les rôles soient (presque) totalement indépendants du reste du code (LGGame, LGPlayer...).  
+Merci de garder cela en tête lors du développement de nouveaux rôles : utilisez un maximum les évènements et, s'il en manque, créez-les !
+
+#### Quelques classes utiles
+`LGGame` : Contient le coeur du jeu, à modifier le minimum possible !  
+`LGPlayer` : Classe utilisée pour intéragir avec les joueurs et stocker leurs données, à modifier le minimum possible !  
+`LGVote` : Système gérant les votes.  
+`RoleSort`: Classement de l'apparition des rôles durant la nuit. 
+
+### Publier un rôle
+
+Si vous arrivez à créer un rôle, je vous invite à faire une demande de publication dans cette repo afin de les faire partager à l'ensemble de la communauté !
+
+# License
+[![License Logo (CC BY-NC)](https://licensebuttons.net/l/by-nc/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/legalcode.fr)
+
+Creative Commons BY-NC (https://creativecommons.org/licenses/by-nc/4.0/)
+
+Informations légales : https://creativecommons.org/licenses/by-nc/4.0/legalcode

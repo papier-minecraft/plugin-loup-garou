@@ -1,0 +1,11 @@
+build:
+  stage: build
+  tags:
+    - docker
+  image: arm32v7/maven:3-jdk-8
+  script:
+    - mkdir -p /root/.m2/repository/org/spigotmc
+    - mv build/repository_spigotmc/* /root/.m2/repository/org/spigotmc
+    - mvn deploy -s ci_settings.xml
+  only:
+    - master
