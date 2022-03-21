@@ -20,6 +20,8 @@ build:
     - mkdir -p /root/.m2/repository/org
     - mv spigotmc /root/.m2/repository/org
     - mvn deploy -s ci_settings.xml
+  only:
+    - master
 
 upload:
   stage: upload
@@ -29,3 +31,5 @@ upload:
   script:
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file maps/lg_medieval.zip "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/maps_medieval/1.0.0/lg_medieval.zip"'
     - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file maps/lg_village.zip "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/maps_village/1.0.0/lg_village.zip"'
+  only:
+    - master

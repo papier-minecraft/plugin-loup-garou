@@ -1,34 +1,14 @@
 # PLUGIN LOUP GAROU
 
-## Table des matières
-
-- [PLUGIN LOUP GAROU](#plugin-loup-garou)
-  - [Table des matières](#table-des-matières)
-  - [À propos](#à-propos)
-  - [Jouer facilement](#jouer-facilement)
-  - [Installation](#installation)
-    - [Dépendances requises](#dépendances-requises)
-    - [Installation classique](#installation-classique)
-    - [Installation avec docker (Alternative)](#installation-avec-docker-alternative)
-      - [Installation du serveur](#installation-du-serveur)
-      - [Démarage du serveur](#démarage-du-serveur)
-  - [Commandes](#commandes)
-  - [Crédits](#crédits)
-  - [Aide](#aide)
-    - [Questions fréquentes](#questions-fréquentes)
-  - [Indications pour les développeurs](#indications-pour-les-développeurs)
-    - [Ajouter des rôles](#ajouter-des-rôles)
-      - [Quelques classes utiles](#quelques-classes-utiles)
-    - [Publier un rôle](#publier-un-rôle)
-- [License](#license)
+[TOC]
 
 ## À propos
 
 Le mode Loup-Garou est un mode inspiré du jeu de société [Les Loups-Garous de Thiercelieux](https://fr.wikipedia.org/wiki/Les_Loups-garous_de_Thiercelieux) reprenant son fonctionnement ainsi que sa manière d'être joué, à la seule différence qu'aucun maître du jeu n'est requis, le déroulement de chaque partie étant entièrement automatisé :
 
-- Déroulement de la partie automatisé
-- Rôles du jeu de base, et nouveaux rôles
-- Utilisable sur n'importe quelle map
+- Déroulement de la partie automatisé ;
+- Rôles du jeu de base, et nouveaux rôles ;
+- Utilisable sur n'importe quelle map.
 
 ## Jouer facilement
 Un serveur est mis à votre disposition pour vous permettre de jouer au LoupGarou rapidement et facilement entre amis ou avec des inconnus. Vous avez juste à créer une partie et y inviter vos amis, ou à rejoindre des parties publiques.
@@ -44,8 +24,8 @@ Un serveur est mis à votre disposition pour vous permettre de jouer au LoupGaro
 ### Installation classique
 **Minecraft 1.15.1 est requis.**  
 Pour installer le plug-in, merci de suivre les étapes suivantes:
-  - Téléchargez Spigot 1.15.1 et lancez une fois le serveur
-  - Dans le dossier `plugins`, insérez [ProtocolLib](https://www.spigotmc.org/resources/protocollib.1997/) et [LoupGarou.jar](https://github.com/leomelki/LoupGarou/releases)
+  - Téléchargez Spigot 1.15.1 ([accessible ici](https://gitlab.papierpain.fr/minecraft/spigot/-/package_files/4/download)) et lancez une fois le serveur
+  - Dans le dossier `plugins`, insérez [ProtocolLib](https://www.spigotmc.org/resources/protocollib.1997/) et [LoupGarou.jar](https://gitlab.papierpain.fr/minecraft/plugin-loup-garou/-/package_files/11/download)
   - Redémarrez votre serveur puis donnez vous les permissions administrateur (/op <votre_pseudo> dans la console)
   - Allez sur la map et ajoutez les points de spawn sur chaque dalle `/lg addSpawn`
   - Connectez-vous au serveur et choisissez les rôles à utiliser avec `/lg roles set <ROLE> <MONTANT>`
@@ -53,49 +33,10 @@ Pour installer le plug-in, merci de suivre les étapes suivantes:
   - Vous pouvez démarrer la partie avec `/lg start <pseudo>` 
 	  - ⚠️ N'oubliez pas de mettre votre pseudo. Exemple : `/lg start leomelki` 
 
-Lien des releases : [Cliquez ici](https://github.com/leomelki/LoupGarou/releases)
-
-
 ### Installation avec docker (Alternative)
 
-Vous devez avoir installé `docker` et `docker-compose` sur votre machine
+> Revoir le process !!!
 
-```sh
-version: "3.0"
-
-services:
-  loup-garou:
-    build:
-      context: .
-      dockerfile: ./docker/Dockerfile
-      args:
-        SPIGOT_VERSION: 1.15.1
-    volumes:
-      - ./minecraft_data:/minecraft
-    ports:
-      - 25565:25565
-```
-
-#### Installation du serveur
-```sh
-docker-compose up -d --build
-```
-
-#### Démarage du serveur
-
-Vous devez exécuter la commande suivante à chaque redémarage de votre machine avant de pouvoir continuer
-
-```sh
-docker-compose up -d
-```
-
-Ainsi, vous pouvez lancer le serveur en utilisant la commande suivante :
-
-```sh
-docker-compose exec loup-garou java -jar spigot.jar
-```
-
-Les fichiers relatifs à minecraft se situeront dans le dossier `minecraft_data` 
 > **Tip :** Il faut accepter les conditions d'utilisations de Mojang en modifiant le fichier `minecraft_data/eula.txt`
 
 ## Commandes
@@ -167,11 +108,7 @@ Merci de garder cela en tête lors du développement de nouveaux rôles : utilis
 `LGVote` : Système gérant les votes.  
 `RoleSort`: Classement de l'apparition des rôles durant la nuit. 
 
-### Publier un rôle
-
-Si vous arrivez à créer un rôle, je vous invite à faire une demande de publication dans cette repo afin de les faire partager à l'ensemble de la communauté !
-
-# License
+## License
 [![License Logo (CC BY-NC)](https://licensebuttons.net/l/by-nc/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc/4.0/legalcode.fr)
 
 Creative Commons BY-NC (https://creativecommons.org/licenses/by-nc/4.0/)
