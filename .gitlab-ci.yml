@@ -1,11 +1,31 @@
+variables:
+  SPIGOT_PROJECT_ID: 54
+  SPIGOT_VERSION:
+    value: "1.15.1"
+    description: "Spigot version"
+  PACKAGES_PATH: "spigotmc"
+
+stages:
+  - build
+  - upload
+
 build:
   stage: build
   tags:
     - docker
   image: arm32v7/maven:3-jdk-8
   script:
-    - mkdir -p /root/.m2/repository/org/spigotmc
-    - mv build/repository_spigotmc/* /root/.m2/repository/org/spigotmc
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --location -k --output spigotmc.tar.gz ${CI_API_V4_URL}/projects/${SPIGOT_PROJECT_ID}/packages/generic/${PACKAGES_PATH}/${SPIGOT_VERSION}/spigotmc.tar.gz'
+    - tar -xzf spigotmc.tar.gz
+    - mkdir -p /root/.m2/repository/org
+    - mv spigotmc /root/.m2/repository/org
     - mvn deploy -s ci_settings.xml
-  only:
-    - master
+
+upload:
+  stage: upload
+  tags:
+    - shell
+    - localhost
+  script:
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file maps/lg_medieval.zip "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/maps_medieval/1.0.0/lg_medieval.zip"'
+    - 'curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file maps/lg_village.zip "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/maps_village/1.0.0/lg_village.zip"'
