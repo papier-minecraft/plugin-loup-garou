@@ -5,8 +5,8 @@ import org.bukkit.event.Listener;
 
 import com.comphenix.protocol.wrappers.EnumWrappers.ScoreboardAction;
 
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerScoreboardScore;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
+import com.comphenix.packetwrapper.WrapperPlayServerScoreboardScore;
+import com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
 import fr.leomelki.loupgarou.events.LGGameJoinEvent;
 
 public class LoupGarouListener implements Listener {

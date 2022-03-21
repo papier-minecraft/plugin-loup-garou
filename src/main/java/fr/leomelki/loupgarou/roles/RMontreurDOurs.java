@@ -7,7 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 
-import fr.leomelki.loupgarou.MainLg;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.LGGame;
 import fr.leomelki.loupgarou.classes.LGPlayer;
 import fr.leomelki.loupgarou.events.LGDayStartEvent;
@@ -64,7 +64,7 @@ public class RMontreurDOurs extends Role{
 			if(lastNight == getGame().getNight())
 				return;
 			lastNight = getGame().getNight();
-			List<?> original = MainLg.getInstance().getConfig().getList("spawns");
+			List<?> original = LoupGarou.getInstance().getConfig().getList("spawns");
 			for(LGPlayer target : getPlayers()) {
 				if(!target.isRoleActive())
 					continue;

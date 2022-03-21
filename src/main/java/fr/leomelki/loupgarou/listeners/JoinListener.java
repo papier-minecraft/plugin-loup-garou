@@ -15,8 +15,8 @@ import org.bukkit.potion.PotionEffectType;
 
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
 
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
-import fr.leomelki.loupgarou.MainLg;
+import com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.LGPlayer;
 import fr.leomelki.loupgarou.events.LGPlayerKilledEvent.Reason;
 
@@ -51,7 +51,7 @@ public class JoinListener implements Listener{
 		else {
 			LGPlayer lgp = LGPlayer.thePlayer(e.getPlayer());
 			lgp.showView();
-			lgp.join(MainLg.getInstance().getCurrentGame());
+			lgp.join(LoupGarou.getInstance().getCurrentGame());
 		}
 		if(noSpec)
 			p.setGameMode(GameMode.ADVENTURE);
@@ -66,9 +66,9 @@ public class JoinListener implements Listener{
 			Player p = e.getPlayer();
 			LGPlayer lgp = LGPlayer.thePlayer(p);
 			lgp.showView();
-			lgp.join(MainLg.getInstance().getCurrentGame());
+			lgp.join(LoupGarou.getInstance().getCurrentGame());
 		}else if(e.getStatus() == Status.DECLINED || e.getStatus() == Status.FAILED_DOWNLOAD)
-			e.getPlayer().kickPlayer(MainLg.getPrefix()+"§cIl vous faut le resourcepack pour jouer ! ("+e.getStatus()+")");
+			e.getPlayer().kickPlayer(LoupGarou.getPrefix()+"§cIl vous faut le resourcepack pour jouer ! ("+e.getStatus()+")");
 	}
 	@EventHandler
 	public void onLeave(PlayerQuitEvent e) {

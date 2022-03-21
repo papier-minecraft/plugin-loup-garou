@@ -7,7 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 
-import fr.leomelki.loupgarou.MainLg;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.LGGame;
 import fr.leomelki.loupgarou.classes.LGPlayer;
 import fr.leomelki.loupgarou.events.LGPlayerKilledEvent;
@@ -80,7 +80,7 @@ public class RFaucheur extends Role{
 					getGame().kill(killEvent.getKilled(), killEvent.getReason(), false);
 				}
 			} else if (e.getReason() == Reason.VOTE) {
-				List<?> original = MainLg.getInstance().getConfig().getList("spawns");
+				List<?> original = LoupGarou.getInstance().getConfig().getList("spawns");
 				int size = original.size();
 				// double middle = ((double)size)/2D;
 				int killedPlace = killed.getPlace();

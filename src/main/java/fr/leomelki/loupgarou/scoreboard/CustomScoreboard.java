@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
 
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerScoreboardDisplayObjective;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerScoreboardObjective;
+import com.comphenix.packetwrapper.WrapperPlayServerScoreboardDisplayObjective;
+import com.comphenix.packetwrapper.WrapperPlayServerScoreboardObjective;
 import fr.leomelki.loupgarou.classes.LGPlayer;
 import fr.leomelki.loupgarou.utils.RandomString;
 import lombok.Getter;

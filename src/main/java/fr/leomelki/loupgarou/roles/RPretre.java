@@ -22,9 +22,9 @@ import com.comphenix.protocol.wrappers.WrappedDataWatcher;
 import com.comphenix.protocol.wrappers.WrappedDataWatcher.WrappedDataWatcherObject;
 import com.comphenix.protocol.wrappers.WrappedWatchableObject;
 
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerEntityMetadata;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerHeldItemSlot;
-import fr.leomelki.loupgarou.MainLg;
+import com.comphenix.packetwrapper.WrapperPlayServerEntityMetadata;
+import com.comphenix.packetwrapper.WrapperPlayServerHeldItemSlot;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.LGCustomItems;
 import fr.leomelki.loupgarou.classes.LGGame;
 import fr.leomelki.loupgarou.classes.LGPlayer;
@@ -282,7 +282,7 @@ public class RPretre extends Role{
 					public void run() {
 						e.getPlayer().openInventory(e.getInventory());
 					}
-				}.runTaskLater(MainLg.getInstance(), 1);
+				}.runTaskLater(LoupGarou.getInstance(), 1);
 			}
 		}
 	}

@@ -9,7 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.inventory.ItemStack;
 
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
+import com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
 import fr.leomelki.loupgarou.classes.LGCustomItems;
 import fr.leomelki.loupgarou.classes.LGCustomSkin;
 import fr.leomelki.loupgarou.classes.LGGame;

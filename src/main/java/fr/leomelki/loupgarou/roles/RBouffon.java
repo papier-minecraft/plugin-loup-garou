@@ -7,7 +7,7 @@ import java.util.StringJoiner;
 import org.bukkit.event.EventHandler;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import fr.leomelki.loupgarou.MainLg;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.LGGame;
 import fr.leomelki.loupgarou.classes.LGPlayer;
 import fr.leomelki.loupgarou.events.LGGameEndEvent;
@@ -144,7 +144,7 @@ public class RBouffon extends Role{
 						public void run() {
 							getGame().broadcastMessage("§6§oLe "+getName()+"§6§o a rempli son objectif.");
 						}
-					}.runTaskAsynchronously(MainLg.getInstance());
+					}.runTaskAsynchronously(LoupGarou.getInstance());
 				}
 	}
 }

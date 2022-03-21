@@ -3,7 +3,7 @@ package fr.leomelki.loupgarou.roles;
 import org.bukkit.event.EventHandler;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import fr.leomelki.loupgarou.MainLg;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.LGGame;
 import fr.leomelki.loupgarou.classes.LGPlayer;
 import fr.leomelki.loupgarou.classes.LGPlayer.LGChooseCallback;
@@ -96,7 +96,7 @@ public class RCorbeau extends Role{
 							getGame().getVote().vote(new LGPlayer("§a§lLe corbeau"), lg);//fix
 							getGame().broadcastMessage("§7§l"+lg.getName()+"§6 a reçu la visite du "+getName()+"§6.");
 						}
-					}.runTask(MainLg.getInstance());
+					}.runTask(LoupGarou.getInstance());
 					
 				}
 	}

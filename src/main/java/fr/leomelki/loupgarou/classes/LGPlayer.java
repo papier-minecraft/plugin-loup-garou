@@ -20,11 +20,11 @@ import com.comphenix.protocol.wrappers.PlayerInfoData;
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import com.comphenix.protocol.wrappers.WrappedGameProfile;
 
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerChat;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerPlayerInfo;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerTitle;
-import fr.leomelki.loupgarou.MainLg;
+import com.comphenix.packetwrapper.WrapperPlayServerChat;
+import com.comphenix.packetwrapper.WrapperPlayServerPlayerInfo;
+import com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
+import com.comphenix.packetwrapper.WrapperPlayServerTitle;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.chat.LGChat;
 import fr.leomelki.loupgarou.classes.chat.LGChat.LGChatCallback;
 import fr.leomelki.loupgarou.classes.chat.LGNoChat;
@@ -93,7 +93,7 @@ public class LGPlayer {
 	}
 	public void sendMessage(String msg) {
 		if(this.player != null)
-			getPlayer().sendMessage(MainLg.getPrefix()+msg);
+			getPlayer().sendMessage(LoupGarou.getPrefix()+msg);
 	}
 	public void sendTitle(String title, String subTitle, int stay) {
 		if(this.player != null) {
@@ -258,7 +258,7 @@ public class LGPlayer {
 					getPlayer().updateInventory();
 					getPlayer().setWalkSpeed(speed);
 				}
-			}.runTaskLater(MainLg.getInstance(), 5);
+			}.runTaskLater(LoupGarou.getInstance(), 5);
 			//Et c'est bon, le joueur se voit avec un nouveau skin avec quasiment aucun problème visible à l'écran :D
 		}
 	}

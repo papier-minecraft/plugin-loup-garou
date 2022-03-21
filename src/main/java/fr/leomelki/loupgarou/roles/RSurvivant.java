@@ -14,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import fr.leomelki.loupgarou.MainLg;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.LGGame;
 import fr.leomelki.loupgarou.classes.LGPlayer;
 import fr.leomelki.loupgarou.classes.LGWinType;
@@ -175,7 +175,7 @@ public class RSurvivant extends Role{
 					public void run() {
 						e.getPlayer().openInventory(e.getInventory());
 					}
-				}.runTaskLater(MainLg.getInstance(), 1);
+				}.runTaskLater(LoupGarou.getInstance(), 1);
 			}
 		}
 	}
@@ -195,7 +195,7 @@ public class RSurvivant extends Role{
 				public void run() {
 					getGame().broadcastMessage("§6§oLe "+getName()+"§6§o a rempli son objectif.");
 				}
-			}.runTaskAsynchronously(MainLg.getInstance());
+			}.runTaskAsynchronously(LoupGarou.getInstance());
 		}
 	}
 }

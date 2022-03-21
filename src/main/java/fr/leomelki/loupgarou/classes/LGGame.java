@@ -29,15 +29,15 @@ import com.comphenix.protocol.wrappers.PlayerInfoData;
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
 import com.comphenix.protocol.wrappers.WrappedGameProfile;
 
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerChat;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerEntityDestroy;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerExperience;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerPlayerInfo;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerScoreboardObjective;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerUpdateHealth;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerUpdateTime;
-import fr.leomelki.loupgarou.MainLg;
+import com.comphenix.packetwrapper.WrapperPlayServerChat;
+import com.comphenix.packetwrapper.WrapperPlayServerEntityDestroy;
+import com.comphenix.packetwrapper.WrapperPlayServerExperience;
+import com.comphenix.packetwrapper.WrapperPlayServerPlayerInfo;
+import com.comphenix.packetwrapper.WrapperPlayServerScoreboardObjective;
+import com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
+import com.comphenix.packetwrapper.WrapperPlayServerUpdateHealth;
+import com.comphenix.packetwrapper.WrapperPlayServerUpdateTime;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.LGCustomItems.LGCustomItemsConstraints;
 import fr.leomelki.loupgarou.classes.chat.LGChat;
 import fr.leomelki.loupgarou.events.LGCustomItemChangeEvent;
@@ -96,7 +96,7 @@ public class LGGame implements Listener{
 	
 	public LGGame(int maxPlayers) {
 		this.maxPlayers = maxPlayers;
-		Bukkit.getPluginManager().registerEvents(this, MainLg.getInstance());
+		Bukkit.getPluginManager().registerEvents(this, LoupGarou.getInstance());
 	}
 	
 	@Getter
@@ -145,7 +145,7 @@ public class LGGame implements Listener{
 				}
 				waitTicks--;
 			}
-		}.runTaskTimer(MainLg.getInstance(), 0, 1);
+		}.runTaskTimer(LoupGarou.getInstance(), 0, 1);
 	}
 	public void wait(int seconds, int initialSeconds, Runnable callback, TextGenerator generator) {
 		cancelWait();
@@ -170,7 +170,7 @@ public class LGGame implements Listener{
 				}
 				waitTicks--;
 			}
-		}.runTaskTimer(MainLg.getInstance(), 0, 1);
+		}.runTaskTimer(LoupGarou.getInstance(), 0, 1);
 	}
 	
 	public static interface TextGenerator{
@@ -286,7 +286,7 @@ public class LGGame implements Listener{
 							else
 								sendActionBarMessage("§6Démarrage dans §e"+timeLeft+"§6...");
 						}
-					}.runTaskTimer(MainLg.getInstance(), 20, 20);
+					}.runTaskTimer(LoupGarou.getInstance(), 20, 20);
 				}
 			}else if(startingTask != null) {
 				startingTask.cancel();
@@ -298,12 +298,12 @@ public class LGGame implements Listener{
 			startingTask.cancel();
 			startingTask = null;
 		}
-		MainLg.getInstance().loadConfig();
+		LoupGarou.getInstance().loadConfig();
 		started = true;
-		MainLg main = MainLg.getInstance();
+		LoupGarou main = LoupGarou.getInstance();
 		
 		//Registering roles
-		List<?> original = MainLg.getInstance().getConfig().getList("spawns");
+		List<?> original = LoupGarou.getInstance().getConfig().getList("spawns");
 		List<Object> list = new ArrayList<Object>(original);
 		for(LGPlayer lgp : getInGame()) {
 			List<Double> location = (List<Double>) list.remove(random.nextInt(list.size()));
@@ -359,7 +359,7 @@ public class LGGame implements Listener{
 					lgp.getPlayer().updateInventory();
 				}
 			}
-		}.runTaskTimer(MainLg.getInstance(), 0, 4);
+		}.runTaskTimer(LoupGarou.getInstance(), 0, 4);
 	}
 	private void _start() {
 		broadcastMessage("§8§oDébut de la partie...");
@@ -473,7 +473,7 @@ public class LGGame implements Listener{
 						time.sendPacket(lgp.getPlayer());
 				}
 			}
-		}.runTaskTimer(MainLg.getInstance(), 1, 1);
+		}.runTaskTimer(LoupGarou.getInstance(), 1, 1);
 		LGGame.this.wait(timeout, this::nextNight_, (player, secondsLeft)->{
 			return "§6La nuit va tomber dans §e"+secondsLeft+" seconde"+(secondsLeft > 1 ? "s" : "");
 		});
@@ -522,7 +522,7 @@ public class LGGame implements Listener{
 							role.onNightTurn(run);
 						}
 					}
-				}.runTaskLater(MainLg.getInstance(), 60);
+				}.runTaskLater(LoupGarou.getInstance(), 60);
 			}
 		}.run();
 	}
@@ -644,7 +644,7 @@ public class LGGame implements Listener{
 				team.setMode(1);
 				team.setName("you_are");
 				team.sendPacket(lgp.getPlayer());
-				LGPlayer.thePlayer(lgp.getPlayer()).join(MainLg.getInstance().getCurrentGame());
+				LGPlayer.thePlayer(lgp.getPlayer()).join(LoupGarou.getInstance().getCurrentGame());
 			}
 		//A remettre pour activer le démarrage automatique
 	/*	wait(30, ()->{
@@ -654,7 +654,7 @@ public class LGGame implements Listener{
 					team.setMode(1);
 					team.setName("you_are");
 					team.sendPacket(lgp.getPlayer());
-					LGPlayer.thePlayer(lgp.getPlayer()).join(MainLg.getInstance().getCurrentGame());
+					LGPlayer.thePlayer(lgp.getPlayer()).join(LoupGarou.getInstance().getCurrentGame());
 				}
 		}, (player, secondsLeft)->{
 			return "§6Démarrage d'une nouvelle partie dans §e"+secondsLeft+" seconde"+(secondsLeft > 1 ? "s" : "");
@@ -721,7 +721,7 @@ public class LGGame implements Listener{
 						time.sendPacket(lgp.getPlayer());
 				}
 			}
-		}.runTaskTimer(MainLg.getInstance(), 1, 1);
+		}.runTaskTimer(LoupGarou.getInstance(), 1, 1);
 		
 		LGPreDayStartEvent dayStart = new LGPreDayStartEvent(this);
 		Bukkit.getPluginManager().callEvent(dayStart);
@@ -771,7 +771,7 @@ public class LGGame implements Listener{
 				else
 					peopleVote();
 			}
-		}.runTaskLater(MainLg.getInstance(), 40);
+		}.runTaskLater(LoupGarou.getInstance(), 40);
 	
 	}
 	@Getter private LGPlayer mayor;

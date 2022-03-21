@@ -8,7 +8,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import fr.leomelki.loupgarou.MainLg;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.LGCustomItems;
 import fr.leomelki.loupgarou.classes.LGGame;
 import fr.leomelki.loupgarou.classes.LGPlayer;
@@ -22,8 +22,8 @@ public abstract class Role implements Listener{
 	
 	public Role(LGGame game) {
 		this.game = game;
-		Bukkit.getPluginManager().registerEvents(this, MainLg.getInstance());
-		FileConfiguration config = MainLg.getInstance().getConfig();
+		Bukkit.getPluginManager().registerEvents(this, LoupGarou.getInstance());
+		FileConfiguration config = LoupGarou.getInstance().getConfig();
 		String roleConfigName = "role."+getClass().getSimpleName().substring(1);
 		if(config.contains(roleConfigName))
 			waitedPlayers = config.getInt(roleConfigName);
@@ -87,7 +87,7 @@ public abstract class Role implements Listener{
 						public void run() {
 							run.run();
 						}
-					}.runTaskLater(MainLg.getInstance(), 20*(ThreadLocalRandom.current().nextInt(getTimeout()/3*2-4)+4));
+					}.runTaskLater(LoupGarou.getInstance(), 20*(ThreadLocalRandom.current().nextInt(getTimeout()/3*2-4)+4));
 				}
 			}
 		}.run();

@@ -18,12 +18,12 @@ import com.comphenix.protocol.wrappers.WrappedDataWatcher;
 import com.comphenix.protocol.wrappers.WrappedDataWatcher.WrappedDataWatcherObject;
 import com.comphenix.protocol.wrappers.WrappedWatchableObject;
 
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerEntityDestroy;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerEntityEquipment;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerEntityLook;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerEntityMetadata;
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerSpawnEntityLiving;
-import fr.leomelki.loupgarou.MainLg;
+import com.comphenix.packetwrapper.WrapperPlayServerEntityDestroy;
+import com.comphenix.packetwrapper.WrapperPlayServerEntityEquipment;
+import com.comphenix.packetwrapper.WrapperPlayServerEntityLook;
+import com.comphenix.packetwrapper.WrapperPlayServerEntityMetadata;
+import com.comphenix.packetwrapper.WrapperPlayServerSpawnEntityLiving;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.LGGame;
 import fr.leomelki.loupgarou.classes.LGPlayer;
 import fr.leomelki.loupgarou.classes.LGPlayer.LGChooseCallback;
@@ -179,7 +179,7 @@ public class RCupidon extends Role{
 				equip.setItem(skull);
 				equip.sendPacket(to.getPlayer());
 			}
-		}.runTaskLater(MainLg.getInstance(), 2);
+		}.runTaskLater(LoupGarou.getInstance(), 2);
 	}
 	
 	@Override

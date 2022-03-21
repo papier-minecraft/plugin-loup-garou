@@ -1,23 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>fr.leomelki</groupId>
     <artifactId>LoupGarou</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>LoupGarou</name>
+
+    <description>Permet de jouer au jeu du loup garou</description>
+    
     <properties>
+        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
+
+    <url>https://gitlab.papierpain.fr/minecraft/plugin-loup-garou</url>
+
     <build>
         <finalName>LoupGarou</finalName>
         <sourceDirectory>src</sourceDirectory>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -40,35 +54,36 @@
                 </configuration>
             </plugin>
         </plugins>
+
         <resources>
             <resource>
-                <directory>src/main/java</directory>
+                <directory>src/main/resources</directory>
                 <includes>
                     <include>plugin.yml</include>
                 </includes>
             </resource>
         </resources>
     </build>
+
     <repositories>
+        <repository>
+            <id>localrepository</id>
+            <url>file://${project.basedir}/lib</url>
+        </repository>
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>dmulloy2-repo</id>
+            <url>https://repo.dmulloy2.net/repository/public/</url>
+        </repository>
         <repository>
             <id>gitlab-maven</id>
             <url>${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/maven</url>
         </repository>
-        <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
-        </repository>
-        <repository>
-            <id>dmulloy2-repo</id>
-            <url>http://repo.dmulloy2.net/nexus/repository/public/</url>
-        </repository>
-        <!--Bungeecord Repo-->
-        <!--Only include if using the Spigot API dependency-->
-        <repository>
-            <id>bungeecord-repo</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </repository>
     </repositories>
+    
     <distributionManagement>
         <repository>
             <id>gitlab-maven</id>
@@ -79,12 +94,14 @@
             <url>${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/maven</url>
         </snapshotRepository>
     </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.15.1-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
+<!--            <scope>system</scope>-->
+<!--            <systemPath>${pom.basedir}/lib/spigot.jar</systemPath>-->
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
@@ -92,15 +109,19 @@
             <version>20180813</version>
         </dependency>
         <dependency>
-            <groupId>com.comphenix.protocol</groupId>
-            <artifactId>ProtocolLib</artifactId>
-            <version>4.4.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.10</version>
-            <scope>provided</scope>
+            <version>1.18.22</version>
+        </dependency>
+        <dependency>
+            <groupId>com.comphenix.protocol</groupId>
+            <artifactId>ProtocolLib</artifactId>
+            <version>4.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.comphenix.packetwrapper</groupId>
+            <artifactId>PacketWrapper</artifactId>
+            <version>1.13-R0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

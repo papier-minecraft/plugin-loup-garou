@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import fr.leomelki.loupgarou.MainLg;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.LGCustomItems;
 import fr.leomelki.loupgarou.classes.LGCustomItems.LGCustomItemsConstraints;
 import fr.leomelki.loupgarou.classes.LGGame;
@@ -212,7 +212,7 @@ public class RLoupGarouNoir extends Role{
 					public void run() {
 						e.getPlayer().openInventory(e.getInventory());
 					}
-				}.runTaskLater(MainLg.getInstance(), 1);
+				}.runTaskLater(LoupGarou.getInstance(), 1);
 			}
 		}
 	}

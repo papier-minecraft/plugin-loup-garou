@@ -18,8 +18,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerHeldItemSlot;
-import fr.leomelki.loupgarou.MainLg;
+import com.comphenix.packetwrapper.WrapperPlayServerHeldItemSlot;
+import fr.leomelki.loupgarou.LoupGarou;
 import fr.leomelki.loupgarou.classes.LGGame;
 import fr.leomelki.loupgarou.classes.LGPlayer;
 import fr.leomelki.loupgarou.classes.LGWinType;
@@ -282,7 +282,7 @@ public class RPyromane extends Role{
 					public void run() {
 						e.getPlayer().openInventory(e.getInventory());
 					}
-				}.runTaskLater(MainLg.getInstance(), 1);
+				}.runTaskLater(LoupGarou.getInstance(), 1);
 			}
 		}
 	}

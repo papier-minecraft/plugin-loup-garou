@@ -1,0 +1,10 @@
+name: LoupGarou
+authors: [ leomelki, papierpain ]
+version: 1.2.0-SNAPSHOT
+api-version: 1.13
+main: fr.leomelki.loupgarou.LoupGarou
+depend: [ ProtocolLib ]
+description: Permet de jouer au jeu du loup garou
+website: https://gitlab.papierpain.fr/minecraft/plugin-loup-garou
+commands:
+  lg:

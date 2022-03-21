@@ -7,7 +7,7 @@ import java.util.Map.Entry;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 
-import fr.leomelki.com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
+import com.comphenix.packetwrapper.WrapperPlayServerScoreboardTeam;
 import fr.leomelki.loupgarou.classes.LGCustomSkin;
 import fr.leomelki.loupgarou.classes.LGGame;
 import fr.leomelki.loupgarou.classes.LGPlayer;
