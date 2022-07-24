@@ -244,10 +244,10 @@ public class LGPlayer {
 			WrappedGameProfile gameProfile = new WrappedGameProfile(getPlayer().getUniqueId(), getPlayer().getName());
 			infos.setData(Arrays.asList(new PlayerInfoData(gameProfile, 10, NativeGameMode.SURVIVAL, WrappedChatComponent.fromText(getPlayer().getName()))));
 			infos.sendPacket(getPlayer());
-			//Pour qu'il voit son skin changer (sa main et en f5), on lui dit qu'il respawn (alors qu'il n'est pas mort mais ça marche quand même mdr)
+			//Pour qu'il voie son skin changer (sa main et en f5), on lui dit qu'il respawn (alors qu'il n'est pas mort, mais ça marche quand même mdr)
 			PacketPlayOutRespawn respawn = new PacketPlayOutRespawn(DimensionManager.OVERWORLD, 0, WorldType.NORMAL, EnumGamemode.ADVENTURE);
 			((CraftPlayer)getPlayer()).getHandle().playerConnection.sendPacket(respawn);
-			//Enfin, on le téléporte à sa potion actuelle car sinon il se verra dans le vide
+			//Enfin, on le téléporte à sa potion actuelle, car sinon il se verra dans le vide
 			getPlayer().teleport(getPlayer().getLocation());
 			float speed = getPlayer().getWalkSpeed();
 			getPlayer().setWalkSpeed(0.2f);

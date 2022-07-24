@@ -1,0 +1,12 @@
+version: '3.0'
+
+services:
+  loup-garou:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: loup-garou
+    volumes:
+      - ./local/:/minecraft/
+    ports:
+      - 25560:25560

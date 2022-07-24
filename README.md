@@ -7,14 +7,35 @@
 Le mode Loup-Garou est un mode inspiré du jeu de société [Les Loups-Garous de Thiercelieux](https://fr.wikipedia.org/wiki/Les_Loups-garous_de_Thiercelieux) reprenant son fonctionnement ainsi que sa manière d'être joué, à la seule différence qu'aucun maître du jeu n'est requis, le déroulement de chaque partie étant entièrement automatisé :
 
 - Déroulement de la partie automatisé ;
-- Rôles du jeu de base, et nouveaux rôles ;
+- Rôles du jeu de base et nouveaux rôles ;
 - Utilisable sur n'importe quelle map.
 
-## Jouer facilement
-Un serveur est mis à votre disposition pour vous permettre de jouer au LoupGarou rapidement et facilement entre amis ou avec des inconnus. Vous avez juste à créer une partie et y inviter vos amis, ou à rejoindre des parties publiques.
+## Développement
 
-**IP:** `lg.leomelki.fr`
-**Version:** `1.9.4`
+Vous devez installer Java et Maven pour le développement du plugin.
+
+Vous devez aussi installer spigot avec BuildTools.jar dans le dossier `lib` (si il n'existe pas, créez-le).
+
+```bash
+mkdir lib
+cd lib
+wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+java -jar BuildTools.jar --rev 1.15.1
+```
+
+Si vous utilisez l'image docker pour le développement, vous devez installer Docker et docker-compose.
+Puis, exécuter les commandes suivantes :
+
+```
+docker-compose up --build -d
+docker-compose up -d
+```
+
+Ensuite vous devez builder le plugin.
+
+```bash
+mvn clean install
+```
 
 ## Installation
 

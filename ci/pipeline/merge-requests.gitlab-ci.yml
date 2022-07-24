@@ -1,0 +1,35 @@
+.merge-request:
+  tags:
+    - docker
+  image: papierpain/maven-spigot:${SPIGOT_VERSION}
+  only:
+    - merge_requests
+
+compile-plugin:
+  stage: build
+  extends: .merge-request
+  script:
+    - mvn ${MAVEN_CLI_OPTS} compile
+  artifacts:
+    expire_in: 10 min
+    paths:
+      - target/
+
+verify-plugin:
+  stage: build
+  extends: .merge-request
+  script:
+    - mvn ${MAVEN_CLI_OPTS} verify
+  needs:
+    - job: compile-plugin
+      artifacts: true
+
+test-plugin:
+  stage: test
+  extends: .merge-request
+  script:
+    - find . -name "*.class" -exec touch {} \+
+    - mvn ${MAVEN_CLI_OPTS} test
+  needs:
+    - job: compile-plugin
+      artifacts: true

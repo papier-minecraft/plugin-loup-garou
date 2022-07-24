@@ -111,3 +111,9 @@ buildNumber.properties
 
 # Common working directory
 run/
+
+lib/
+local/
+!local/plugins/LoupGarou/*
+!local/eula.txt
+!local/server.properties
