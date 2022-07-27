@@ -14,6 +14,11 @@ Le mode Loup-Garou est un mode inspiré du jeu de société [Les Loups-Garous de
 
 Vous devez installer Java et Maven pour le développement du plugin.
 
+```bash
+sudo apt-get install openjdk-8-jdk
+sudo update-alternatives --config java # pour changer de version de java
+```
+
 Vous devez aussi installer spigot avec BuildTools.jar dans le dossier `lib` (si il n'existe pas, créez-le).
 
 ```bash
@@ -23,10 +28,12 @@ wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifac
 java -jar BuildTools.jar --rev 1.15.1
 ```
 
+Vous pouvez aussi directement installer spigot avec le script `install-spigot.sh`.
+
 Si vous utilisez l'image docker pour le développement, vous devez installer Docker et docker-compose.
 Puis, exécuter les commandes suivantes :
 
-```
+```bash
 docker-compose up --build -d
 docker-compose up -d
 ```

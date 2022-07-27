@@ -1,0 +1,43 @@
+.build:
+  stage: build
+  except:
+    - merge_requests
+
+
+build-plugin:
+  extends: .build
+  tags:
+    - docker
+  image: papierpain/maven-spigot:${SPIGOT_VERSION}
+  script:
+    - cp -r -u -p /minecraft/lib /builds/minecraft/plugin-loup-garou/
+    - cp -r -u -p /minecraft/.m2 /builds/minecraft/plugin-loup-garou/
+    - ci/scripts/build.sh "$MAVEN_CLI_OPTS"
+
+build-image:
+  extends: .build
+  tags:
+    - shell
+  before_script:
+    - docker login docker.io -u $DOCKER_USER -p $DOCKER_TOKEN
+  script:
+    - ci/scripts/get-package-version.sh ${CI_PROJECT_ID} ${API_TOKEN} ${VERSION} ${CI_API_V4_URL}
+    - |
+      docker build \
+        -t $IMAGE:$VERSION \
+        -t $IMAGE:latest \
+        --build-arg CI_API_V4_URL=$CI_API_V4_URL \
+        --build-arg CI_PROJECT_ID=$CI_PROJECT_ID \
+        --build-arg SPIGOT_PROJECT_ID=$SPIGOT_PROJECT_ID \
+        --build-arg SPIGOT_VERSION=$SPIGOT_VERSION \
+        --build-arg API_TOKEN=$API_TOKEN \
+        -f ci/Dockerfile.prod .
+    - docker push $IMAGE:$VERSION
+    - docker push $IMAGE:latest
+  after_script:
+    - docker logout
+    - docker images --format "{{.Repository}}:{{.Tag}}:{{.ID}}" | grep "$IMAGE" | cut -f 3 -d ":" | xargs docker rmi
+  needs:
+    - job: get-version
+      artifacts: true
+    - job: build-plugin

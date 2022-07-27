@@ -5,8 +5,10 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+      args:
+        EULA: 'true'
+        SPIGOT_VERSION: '1.15.1'
+        VERSION: '1.2.0-SNAPSHOT'
     container_name: loup-garou
-    volumes:
-      - ./local/:/minecraft/
     ports:
       - 25560:25560

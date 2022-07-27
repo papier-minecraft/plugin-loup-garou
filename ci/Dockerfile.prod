@@ -1,34 +1,33 @@
 FROM eclipse-temurin:8-jdk
 
 WORKDIR /minecraft
-EXPOSE 25560
 
-ARG VERSION_PROTOCOLLIB=4.8.0
-ARG VERSION_VIAVERSION=4.3.1
-ARG VERSION_DISCORDSRV=1.25.1
-
-ARG CI_API_V4_URL
-ARG CI_PROJECT_ID
-ARG PACKAGES_PATH
-ARG SPIGOT_PROJECT_ID
-ARG SPIGOT_VERSION
-ARG API_TOKEN
-ARG VERSION
-
-RUN apt-get update && apt-get install -y unzip wget && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # SPIGOT
-RUN mkdir lib && curl -X GET --header "PRIVATE-TOKEN: ${API_TOKEN}" ${CI_API_V4_URL}/projects/${SPIGOT_PROJECT_ID}/packages/generic/${PACKAGES_PATH}/${SPIGOT_VERSION}/spigot.jar >> lib/spigot.jar
+ARG CI_API_V4_URL
+ARG API_TOKEN
+ARG SPIGOT_PROJECT_ID
+ARG SPIGOT_VERSION
+RUN curl -X GET --header "PRIVATE-TOKEN: ${API_TOKEN}" ${CI_API_V4_URL}/projects/${SPIGOT_PROJECT_ID}/packages/generic/spigotmc/${SPIGOT_VERSION}/spigot.jar > spigot.jar
 
 # PLUGINS
+ARG VERSION_PROTOCOLLIB=4.8.0
 ADD https://github.com/dmulloy2/ProtocolLib/releases/download/${VERSION_PROTOCOLLIB}/ProtocolLib.jar ./plugins/ProtocolLib.jar
+
+ARG VERSION_VIAVERSION=4.4.0
 ADD https://github.com/ViaVersion/ViaVersion/releases/download/${VERSION_VIAVERSION}/ViaVersion-${VERSION_VIAVERSION}.jar ./plugins/ViaVersion.jar
+
+ARG VERSION_DISCORDSRV=1.25.1
 ADD https://github.com/DiscordSRV/DiscordSRV/releases/download/v${VERSION_DISCORDSRV}/DiscordSRV-Build-${VERSION_DISCORDSRV}.jar ./plugins/DiscordSRV.jar
-RUN curl -X GET --header "PRIVATE-TOKEN: ${API_TOKEN}" ${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/maven/fr/leomelki/LoupGarou/${VERSION}/LoupGarou-${VERSION}.jar >> ./plugins/LoupGarou.jar
+
+ARG CI_PROJECT_ID
+COPY LoupGarou.jar ./plugins/LoupGarou.jar
 
 # MAPS
-COPY maps/* ./
-RUN unzip ./lg_\*.zip
+COPY conf/server.properties ./server.properties
+COPY conf/maps ./lg_village
+COPY conf/plugins/LoupGarou ./plugins/LoupGarou
 
+EXPOSE 25560
 
-CMD [ "java", "-Xmx1G", "-Xms1G", "-jar", "./spigot.jar", "nogui" ]
+CMD [ "java", "-Xmx1G", "-Xms1G", "-jar", "spigot.jar", "nogui" ]

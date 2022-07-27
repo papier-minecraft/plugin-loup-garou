@@ -113,7 +113,3 @@ buildNumber.properties
 run/
 
 lib/
-local/
-!local/plugins/LoupGarou/*
-!local/eula.txt
-!local/server.properties

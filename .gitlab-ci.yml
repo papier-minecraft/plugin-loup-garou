@@ -2,11 +2,14 @@ variables:
   IMAGE: $DOCKER_USER/$CI_PROJECT_NAME
 
   SPIGOT_PROJECT_ID: 54
-  SPIGOT_VERSION: '1.15.1'
-  
-  MAVEN_OPTS: '-Dhttps.protocols=TLSv1.2 -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Djansi.force=true'
-  MAVEN_CLI_OPTS: '--errors --fail-at-end --show-version -Dstyle.color=always'
+  SPIGOT_VERSION: "1.15.1"
 
+  MAVEN_OPTS: "-Dhttps.protocols=TLSv1.2 -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=WARN -Dorg.slf4j.simpleLogger.showDateTime=true -Djava.awt.headless=true -XX:+TieredCompilation -XX:TieredStopAtLevel=1 -Djansi.force=true -Dmaven.repo.local=.m2/repository"
+  MAVEN_CLI_OPTS: "--errors --fail-at-end --show-version -Dstyle.color=always"
+
+cache:
+  paths:
+    - .m2/repository
 
 ##################################
 ## PRE
@@ -17,7 +20,7 @@ get-version:
   tags:
     - shell
   script:
-    - ci/version.sh
+    - ci/scripts/version.sh
   artifacts:
     reports:
       dotenv: build.env
@@ -27,7 +30,7 @@ clean-snapshot-version:
   tags:
     - shell
   script:
-    - ci/clean-snapshot-version.sh ${CI_PROJECT_ID} ${API_TOKEN} ${VERSION} ${CI_API_V4_URL}
+    - ci/scripts/clean-snapshot-version.sh ${CI_PROJECT_ID} ${API_TOKEN} ${VERSION} ${CI_API_V4_URL}
   needs:
     - job: get-version
       artifacts: true
@@ -36,15 +39,34 @@ clean-snapshot-version:
       - master
       - tags
 
-
 ##################################
 ## BUILD
 ##################################
 
 include:
-  - local: 'ci/pipeline/builds.gitlab-ci.yml'
-  - local: 'ci/pipeline/merge-requests.gitlab-ci.yml'
+  - local: "ci/pipelines/builds.gitlab-ci.yml"
+  - local: "ci/pipelines/merge-requests.gitlab-ci.yml"
 
+##################################
+## DEPLOY
+##################################
+
+deploy-botte:
+  stage: deploy
+  variables:
+    PLAYBOOK_NAME: install_loup_garou.yml
+    ENVIROMENT: inventory
+    VARIABLES: "lg_container_version=$VERSION"
+  trigger:
+    project: nananas/ansible
+    branch: master
+    strategy: depend
+  needs:
+    - job: build-image
+    - job: get-version
+      artifacts: true
+  except:
+    - merge_requests
 
 ##################################
 ## WORKFLOW

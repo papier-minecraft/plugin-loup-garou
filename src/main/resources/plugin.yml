@@ -1,10 +1,13 @@
 name: LoupGarou
-authors: [ leomelki, papierpain ]
-version: 1.2.0-SNAPSHOT
-api-version: 1.13
+version: '${project.version}'
 main: fr.leomelki.loupgarou.LoupGarou
+api-version: 1.15
 depend: [ ProtocolLib ]
-description: Permet de jouer au jeu du loup garou
+authors: [ leomelki, PapierPain ]
+description: Plugin Spigot LoupGarou
 website: https://gitlab.papierpain.fr/minecraft/plugin-loup-garou
+
 commands:
   lg:
+    description: Manage LoupGarou game.
+    usage: Type /lg to manage game.
